@@ -1,0 +1,487 @@
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: Roboto;
+  -webkit-text-size-adjust: 100%;
+  margin: 0;
+}
+.title-text {
+  color: #1d9da8;
+  font-weight: 700;
+  font-size: 40px;
+}
+@media all and (orientation: portrait), (max-width: 1350px) {
+  .title-text {
+    font-size: 60px;
+  }
+}
+.body-text {
+  color: #112d39;
+  font-size: 18px;
+  font-weight: 300;
+}
+@media all and (orientation: portrait), (max-width: 1350px) {
+  .body-text {
+    font-size: 32px;
+  }
+}
+.anchor {
+  position: absolute;
+  top: -75px;
+}
+.anchor .top {
+  top: 0;
+}
+.learn-more {
+  cursor: pointer;
+  width: 300px;
+  height: 50px;
+  background-color: #1d9da8;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 300;
+  transition: background-color 0.3s;
+  font-size: 18px;
+  color: white;
+}
+@media all and (orientation: portrait), (max-width: 1350px) {
+  .learn-more {
+    font-size: 32px;
+  }
+}
+.learn-more a {
+  color: white;
+  text-decoration: none;
+}
+.learn-more:hover {
+  background-color: #105359;
+}
+/* Put <div class="overlay"></div> inside elements that should
+ * have an overlay. Remember to make parent position: relative
+ */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(28, 124, 138, 0.75);
+  z-index: 0;
+}
+.overlay ~ * {
+  z-index: 1;
+}
+.content {
+  padding: 30px 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+.title-bar {
+  padding: 10px;
+  background-image: url("assets/title_image.jpg");
+  background-size: cover;
+  display: flex;
+  margin-top: 75px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  color: white;
+  text-align: center;
+}
+.title-bar .name {
+  font-weight: 500;
+  font-size: 58px;
+  margin: 10px;
+}
+.title-bar .tagline {
+  font-size: 28px;
+  font-weight: 100;
+  margin: 10px;
+}
+@media all and (orientation: portrait), (max-width: 1350px) {
+  .title-bar .tagline {
+    font-size: 45px;
+  }
+}
+.title-bar .tagline .nobreak {
+  white-space: nowrap;
+}
+.about {
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  padding-bottom: 0;
+}
+.about .title-text {
+  margin-bottom: 30px;
+}
+.about .face {
+  align-self: flex-end;
+}
+.about .text {
+  display: flex;
+  flex-direction: column;
+}
+.about .text .body-text {
+  max-width: 500px;
+  margin-bottom: 30px;
+}
+.about .text .reverse-box {
+  display: flex;
+  flex-direction: column-reverse;
+  margin-bottom: 30px;
+}
+.about .text .reverse-box .more-text {
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.5s;
+}
+.about .text .reverse-box .more-text .memberships {
+  margin-top: 30px;
+}
+.about .text .reverse-box .checkbox {
+  display: none;
+}
+.about .text .reverse-box .checkbox:checked + .more-text {
+  max-height: 1000px;
+}
+.spacer-bar {
+  width: 100%;
+  height: 25px;
+  position: relative;
+  background-image: url("assets/thin_bar.webp");
+  background-size: cover;
+}
+.services {
+  background-color: #f5f5f5;
+}
+.services .services-list {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 741px;
+  padding: 15px 0;
+}
+.services .services-list .service {
+  margin: 5px;
+}
+.services .services-list .service img {
+  height: 237px;
+  width: 237px;
+}
+.services .body-text {
+  font-size: 28px;
+  text-align: center;
+}
+@media all and (orientation: portrait), (max-width: 1350px) {
+  .services .body-text {
+    font-size: 45px;
+  }
+}
+.reviews {
+  position: relative;
+  background-image: url("assets/thicker_bar.webp");
+  background-size: cover;
+}
+.reviews .title-text {
+  color: white;
+  margin: 15px;
+}
+.reviews .body-text {
+  color: white;
+  margin: 15px;
+}
+.reviews .learn-more {
+  color: white;
+  margin: 15px;
+}
+.memberships {
+  padding-bottom: 0;
+}
+.memberships .memberships-list {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 900px;
+  align-items: center;
+  justify-content: center;
+}
+.memberships .memberships-list .membership {
+  margin: 30px;
+}
+.memberships:after {
+  width: 1000px;
+  border-bottom: 1px solid #828282;
+  content: "";
+  padding-top: 30px;
+}
+.double {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 60px;
+  position: relative;
+}
+.double .appointment {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+  max-width: 450px;
+  padding-right: 30px;
+}
+@media all and (orientation: portrait), (max-width: 1350px) {
+  .double .appointment {
+    font-size: 45px;
+  }
+}
+.double .appointment .title {
+  font-weight: 700;
+}
+.double .appointment .body-text {
+  font-weight: 300;
+}
+.double .appointment .phone-number {
+  margin: 15px;
+  color: black;
+}
+.double .appointment .book-button {
+  margin: 20px 0px;
+}
+.double .hours {
+  background-color: #1d9da8;
+  padding: 30px;
+  padding-top: 40px;
+}
+.double .hours .title {
+  font-size: 28px;
+  font-weight: 700;
+  color: white;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+@media all and (orientation: portrait), (max-width: 1350px) {
+  .double .hours .title {
+    font-size: 45px;
+  }
+}
+.double .hours .body-text > * {
+  margin: 15px 0;
+  color: white;
+}
+.double .hours .body-text .name {
+  font-weight: 700;
+  color: white;
+}
+.double .hours .body-text .name a {
+  color: white;
+}
+.footer {
+  background-color: #1d9da8;
+  color: white;
+  font-family: "Lato";
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 18px;
+  align-items: center;
+}
+@media all and (orientation: portrait), (max-width: 1350px) {
+  .footer {
+    font-size: 32px;
+  }
+}
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  height: 75px;
+  background-color: white;
+  border-bottom: 2px solid #dcdcdc;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+.top-bar .title-card {
+  position: absolute;
+  top: 37.5px;
+  transform: translate(0, -50%);
+  left: 30px;
+  display: flex;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.top-bar .title-card .name {
+  font-family: "Roboto";
+  color: #618695;
+}
+.top-bar .title-card .line {
+  margin: 0 3px;
+  color: #618695;
+}
+.top-bar .title-card .description {
+  font-family: "Lato";
+  color: #1d9da8;
+}
+.top-bar .menu-toggle .checkbox {
+  display: none;
+}
+.top-bar .menu-toggle .menu li {
+  display: inline;
+}
+.top-bar .menu-toggle .menu li .button {
+  cursor: pointer;
+  margin: 0px 20px;
+  color: #105359;
+  text-decoration: none;
+}
+.top-bar .menu-toggle .menu li .button:hover {
+  color: #1d9da8;
+}
+@media all and (orientation: portrait), (max-width: 1350px) {
+  .top-bar {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 0;
+  }
+  .top-bar .title-card {
+    display: none;
+  }
+  .top-bar .menu-toggle {
+    display: block;
+    position: relative;
+    top: 50px;
+    left: 50px;
+    z-index: 1;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  .top-bar .menu-toggle .checkbox {
+    display: block;
+    width: 100px;
+    height: 80px;
+    position: absolute;
+    top: -7px;
+    left: -5px;
+    cursor: pointer;
+    opacity: 0;
+    /* hide this */
+    z-index: 2;
+    /* and place it over the hamburger */
+    -webkit-touch-callout: none;
+  }
+  .top-bar .menu-toggle .checkbox:checked ~ .line {
+    opacity: 1;
+    transform: rotate(45deg) translate(-2px, -1px);
+    background: #232323;
+  }
+  .top-bar .menu-toggle .checkbox:checked ~ .line:nth-last-child(3) {
+    opacity: 0;
+    transform: rotate(0deg) scale(0.2, 0.2);
+  }
+  .top-bar .menu-toggle .checkbox:checked ~ .line:nth-last-child(2) {
+    transform: rotate(-45deg) translate(0, -1px);
+  }
+  .top-bar .menu-toggle .checkbox:checked ~ ul {
+    transform: none;
+  }
+  .top-bar .menu-toggle .menu {
+    position: absolute;
+    width: 500px;
+    height: 100vh;
+    margin: -120px 0 0 -100px;
+    padding: 50px;
+    padding-top: 125px;
+    background: white;
+    list-style-type: none;
+    -webkit-font-smoothing: antialiased;
+    /* to stop flickering of text in safari */
+    transform-origin: 0% 0%;
+    transform: translate(-100%, 0);
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+  }
+  .top-bar .menu-toggle .menu li {
+    padding: 10px 25px;
+    font-size: 22px;
+    display: block;
+  }
+  .top-bar .menu-toggle .menu li .button {
+    font-size: 40px;
+    color: black;
+  }
+  .top-bar .menu-toggle .line {
+    display: block;
+    width: 83px;
+    height: 10px;
+    margin-bottom: 13px;
+    position: relative;
+    background: #cdcdcd;
+    border-radius: 3px;
+    z-index: 1;
+    transform-origin: 10px 0px;
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
+  }
+  .top-bar .menu-toggle .line:first-child {
+    transform-origin: 0% 0%;
+  }
+  .top-bar .menu-toggle .line:nth-last-child(2) {
+    transform-origin: 0% 100%;
+  }
+  .title-bar {
+    margin-top: 0;
+  }
+  .anchor {
+    top: 0;
+  }
+  .body-text {
+    padding: 0 15px;
+  }
+  .about {
+    flex-direction: column;
+    align-items: center;
+  }
+  .about .face {
+    align-self: center;
+  }
+  .about .text {
+    align-items: center;
+  }
+  .about .text .body-text {
+    max-width: unset;
+  }
+  .about .text .reverse-box {
+    align-items: center;
+  }
+  .about.midy {
+    flex-direction: column-reverse;
+  }
+  .learn-more {
+    width: 80vw;
+    height: 100px;
+  }
+  .double {
+    flex-direction: column;
+  }
+  .double .appointment {
+    max-width: unset;
+  }
+  .double .appointment .body-text {
+    text-align: center;
+  }
+  .double .hours .body-text {
+    text-align: center;
+  }
+}

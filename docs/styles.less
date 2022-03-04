@@ -1,0 +1,558 @@
+@teal: rgb(29, 157, 168);
+@dark-teal: rgb(16, 83, 89);
+
+@body-text-color: rgb(17, 45, 57);
+@header-font-size: 40px;
+@medium-font-size: 28px;
+@body-font-size: 18px;
+
+@mobile-header-font-size: 60px;
+@mobile-medium-font-size: 45px;
+@mobile-body-font-size: 32px;
+
+.header-font-size() {
+  font-size: @header-font-size;
+  @media all and (orientation: portrait), (max-width: 1350px) {
+    font-size: @mobile-header-font-size;
+  }
+}
+
+.medium-font-size() {
+  font-size: @medium-font-size;
+  @media all and (orientation: portrait), (max-width: 1350px) {
+    font-size: @mobile-medium-font-size;
+  }
+}
+
+.body-font-size() {
+  font-size: @body-font-size;
+  @media all and (orientation: portrait), (max-width: 1350px) {
+    font-size: @mobile-body-font-size;
+  }
+}
+
+@content-padding: 30px;
+
+@image-side-length: 237px;
+@image-margin: 5px;
+
+@top-bar-height: 75px;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Roboto;
+  -webkit-text-size-adjust: 100%;
+  margin: 0;
+}
+
+.title-text {
+  color: @teal;
+  font-weight: 700;
+  .header-font-size();
+}
+
+.body-text {
+  color: @body-text-color;
+  .body-font-size();
+  font-weight: 300;
+}
+
+.anchor {
+  position: absolute;
+  top: -@top-bar-height;
+  .top {
+    top: 0;
+  }
+}
+
+.learn-more {
+  cursor: pointer;
+  width: 300px;
+  height: 50px;
+  background-color: @teal;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 300;
+  transition: background-color 0.3s;
+  .body-font-size();
+  color: white;
+  a {
+    color: white;
+    text-decoration: none;
+  }
+  &:hover {
+    background-color: @dark-teal;
+  }
+}
+
+/* Put <div class="overlay"></div> inside elements that should
+ * have an overlay. Remember to make parent position: relative
+ */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(28, 124, 138, 0.75);
+  z-index: 0;
+  & ~ * {
+    z-index: 1;
+  }
+}
+
+.content {
+  padding: @content-padding 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+
+.title-bar {
+  padding: 10px;
+  background-image: url("assets/title_image.jpg");
+  background-size: cover;
+  display: flex;
+  margin-top: @top-bar-height;
+  background-repeat: no-repeat;
+  background-position: center center;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  color: white;
+  text-align: center;
+
+  .name {
+    font-weight: 500;
+    font-size: 58px;
+    margin: 10px;
+  }
+
+  .tagline {
+    .medium-font-size();
+    font-weight: 100;
+    margin: 10px;
+    .nobreak {
+      white-space: nowrap;
+    }
+  }
+}
+
+.about {
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  padding-bottom: 0;
+  .title-text {
+    margin-bottom: @content-padding;
+  }
+  .face {
+    align-self: flex-end;
+  }
+  .text {
+    display: flex;
+    flex-direction: column;
+    .body-text {
+      max-width: 500px;
+      margin-bottom: @content-padding;
+    }
+    .reverse-box {
+      display: flex;
+      flex-direction: column-reverse;
+      margin-bottom: @content-padding;
+
+      .more-text {
+        max-height: 0;
+        overflow: hidden;
+        transition: all 0.5s;
+
+        .memberships {
+          margin-top: @content-padding;
+        }
+      }
+      .checkbox {
+        display: none;
+        &:checked + .more-text {
+          max-height: 1000px;
+        }
+      }  
+    }
+  }
+}
+
+.spacer-bar {
+  width: 100%;
+  height: 25px;
+  position: relative;
+  background-image: url("assets/thin_bar.webp");
+  background-size: cover;
+}
+
+.services {
+  background-color: rgb(245, 245, 245);
+
+  .services-list {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 3 * @image-side-length + 6 * @image-margin;
+    padding: 0.5 * @content-padding 0;
+    .service {
+      margin: @image-margin;
+      img {
+        height: @image-side-length;
+        width: @image-side-length;
+      }
+    }
+  }
+
+  .body-text {
+    .medium-font-size();
+    text-align: center;
+  }
+}
+
+.reviews {
+  position: relative;
+  background-image: url("assets/thicker_bar.webp");
+  background-size: cover;
+  .title-text {
+    color: white;
+    margin: 0.5 * @content-padding;
+  }
+  .body-text {
+    color: white;
+    margin: 0.5 * @content-padding;
+  }
+  .learn-more {
+    color: white;
+    margin: 0.5 * @content-padding;
+  }
+}
+
+.memberships {
+  .memberships-list {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 900px;
+    align-items: center;
+    justify-content: center;
+    .membership {
+      margin: 6 * @image-margin;
+    }
+  }
+  &:after {
+    width: 1000px;
+    border-bottom: 1px solid rgb(130, 130, 130);
+    content: "";
+    padding-top: @content-padding;
+  }
+  padding-bottom: 0;
+}
+
+.double {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 2 * @content-padding;
+
+  position: relative; // allow for anchor to be relatively positionec
+  .appointment {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .medium-font-size();
+    max-width: 450px;
+    padding-right: @content-padding;
+    .title {
+      font-weight: 700;
+    }
+    .body-text {
+      font-weight: 300;
+    }
+    .phone-number {
+      margin: 15px;
+      color: black;
+    }
+    .book-button {
+      margin: 20px 0px;
+    }
+  }
+  .hours {
+    background-color: @teal;
+    padding: @content-padding;
+    padding-top: @content-padding + 10px;
+    .title {
+      .medium-font-size();
+      font-weight: 700;
+      color: white;
+      display: flex;
+      justify-content: center;
+      margin-bottom: @content-padding / 2;
+    }
+    .body-text {
+      & > * {
+        margin: 0.5 * @content-padding 0;
+        color: white;
+      }
+      .name {
+        font-weight: 700;
+        color: white;
+        a {
+          color: white;
+        }
+      }
+    }
+  }
+}
+
+.footer {
+  background-color: @teal;
+  color: white;
+  font-family: "Lato";
+  padding: 0.5 * @content-padding;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  .body-font-size();
+  align-items: center;
+}
+
+
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  height: @top-bar-height;
+  background-color: white;
+  border-bottom: 2px solid rgb(220, 220, 220);
+  padding: 0 20px;
+  box-sizing: border-box;
+
+  .title-card {
+    position: absolute;
+    top: @top-bar-height / 2;
+    transform: translate(0, -50%);
+    left: 30px;
+    display: flex;
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+
+    .name {
+      font-family: "Roboto";
+      color: rgb(97, 134, 149);
+    }
+    .line {
+      margin: 0 3px;
+      color: rgb(97, 134, 149);
+    }
+    .description {
+      font-family: "Lato";
+      color: @teal;
+    }
+  }
+
+  .menu-toggle {
+    .checkbox {
+      display: none;
+    }
+
+    .menu {
+      li {
+        display: inline;
+        .button {
+          cursor: pointer;
+          margin: 0px 20px;
+          color: @dark-teal;
+          text-decoration: none;
+
+          &:hover {
+            color: @teal;
+          }
+        }
+      }
+    }
+
+
+  }
+}
+
+@media all and (orientation: portrait), (max-width: 1350px) {
+  .top-bar {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 0;
+
+    .title-card {
+      display: none;
+    }
+
+    .menu-toggle {
+      display: block;
+      position: relative;
+      top: 50px;
+      left: 50px;
+      
+      z-index: 1;
+      
+      -webkit-user-select: none;
+      user-select: none;
+
+      .checkbox {
+        display: block;
+        width: 100px;
+        height: 80px;
+        position: absolute;
+        top: -7px;
+        left: -5px;
+        
+        cursor: pointer;
+        
+        opacity: 0; /* hide this */
+        z-index: 2; /* and place it over the hamburger */
+        
+        -webkit-touch-callout: none;
+
+        &:checked ~ .line {
+          opacity: 1;
+          transform: rotate(45deg) translate(-2px, -1px);
+          background: #232323;
+        }
+
+        &:checked ~ .line:nth-last-child(3) {
+          opacity: 0;
+          transform: rotate(0deg) scale(0.2, 0.2);
+        }
+
+        &:checked ~ .line:nth-last-child(2) {
+          transform: rotate(-45deg) translate(0, -1px);
+        }
+
+        &:checked ~ ul {
+          transform: none;
+        }
+      }
+
+      .menu {
+        position: absolute;
+        width: 500px;
+        height: 100vh;
+        margin: -120px 0 0 -100px;
+        padding: 50px;
+        padding-top: 125px;
+        
+        background: white;
+        list-style-type: none;
+        -webkit-font-smoothing: antialiased;
+        /* to stop flickering of text in safari */
+        
+        transform-origin: 0% 0%;
+        transform: translate(-100%, 0);
+        
+        transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+
+        li {
+          padding: 10px 25px;
+          font-size: 22px;
+          display: block;
+
+          .button {
+            font-size: 40px;
+            color: black;
+          }
+        }
+      }
+
+      .line {
+        display: block;
+        width: 83px;
+        height: 10px;
+        margin-bottom: 13px;
+        position: relative;
+        
+        background: #cdcdcd;
+        border-radius: 3px;
+        
+        z-index: 1;
+        
+        transform-origin: 10px 0px;
+        
+        transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                    background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                    opacity 0.55s ease;
+
+        &:first-child {
+          transform-origin: 0% 0%;
+        }
+
+        &:nth-last-child(2) {
+          transform-origin: 0% 100%;
+        }
+      }
+    }
+  }
+
+  .title-bar {
+    margin-top: 0;
+  }
+
+  .anchor {
+    top: 0;
+  }
+
+  .body-text {
+    padding: 0 @content-padding/2;
+  }
+
+  .about {
+    flex-direction: column;
+    align-items: center;
+    .face {
+      align-self: center;
+    }
+    .text {
+      align-items: center;
+      .body-text {
+        max-width: unset;
+      }
+      .reverse-box {
+        align-items: center;
+      }
+    }
+    &.midy {
+      flex-direction: column-reverse;
+    }
+  }
+
+  .learn-more {
+      width: 80vw;
+      height: 100px;
+  }
+
+  .double {
+    flex-direction: column;
+    .appointment {
+      max-width: unset;
+      .body-text {
+        text-align: center;
+      }
+    }
+    .hours {
+      .body-text {
+        text-align: center;
+      }
+    }
+  }
+}
