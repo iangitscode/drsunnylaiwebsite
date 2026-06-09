@@ -1,7 +1,0 @@
-#!/bin/bash
-(find . -name "*.less") | while read -r line ; do
-  echo "Processing $line"
-  filename=$(basename -- "$line")
-  ext_filename=${filename%.less}.css
-  lessc $line docs/$ext_filename
-done
